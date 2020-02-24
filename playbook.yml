@@ -1,5 +1,5 @@
 ---
-- name: CIS Hardening
+- name: RHEL8 CIS Hardening
   hosts: test
   become: yes
 
