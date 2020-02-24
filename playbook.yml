@@ -1,0 +1,7 @@
+---
+- name: CIS Hardening
+  hosts: test
+  become: yes
+
+  roles:
+    - RHEL8-CIS
