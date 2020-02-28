@@ -487,7 +487,7 @@
       - rule_1.3.1
 
 - name: "SCORED | 1.3.2 | AUDIT | Ensure filesystem integrity is regularly checked"
-  shell: grep aide {{ rhel7cis_aide_cron['cron_file'] }} /etc/cron.*/*
+  shell: grep aide {{ rhel8cis_aide_cron['cron_file'] }} /etc/cron.*/*
   register: aide_cron_audit
   check_mode: no
   changed_when: no
@@ -630,7 +630,7 @@
   check_mode: no
   changed_when: no
   ignore_errors: yes
-  when: not rhel7cis_selinux_disable
+  when: not rhel8cis_selinux_disable
   tags:
       - level2
       - scored

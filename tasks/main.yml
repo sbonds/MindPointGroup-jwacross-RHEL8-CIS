@@ -24,29 +24,29 @@
 
 - include: section1.yml
   become: yes
-  when: rhel7cis_section1|bool
+  when: rhel8cis_section1|bool
   tags:
-      - rhel7cis_section1
+      - rhel8cis_section1
 
 - include: section2.yml
   become: yes
-  when: rhel7cis_section2|bool
+  when: rhel8cis_section2|bool
 
 - include: section3.yml
   become: yes
-  when: rhel7cis_section3|bool
+  when: rhel8cis_section3|bool
 
 - include: section4.yml
   become: yes
-  when: rhel7cis_section4|bool
+  when: rhel8cis_section4|bool
 
 - include: section5.yml
   become: yes
-  when: rhel7cis_section5|bool
+  when: rhel8cis_section5|bool
 
 - include: section6.yml
   become: yes
-  when: rhel7cis_section6|bool
+  when: rhel8cis_section6|bool
 
 - include: post.yml
   become: yes

@@ -155,7 +155,7 @@
 
 
 - name: "NOTSCORED | 2.2.1.1 | AUDIT | Ensure time synchronization is in use"
-  command: "systemctl is-enabled {{ rhel7cis_time_Synchronization }}"
+  command: "systemctl is-enabled {{ rhel8cis_time_Synchronization }}"
   register: timesync_server_enabled_audit
   failed_when: "'enabled' in timesync_server_enabled_audit.stdout"
   check_mode: no
@@ -178,7 +178,7 @@
   check_mode: no
   changed_when: no
   ignore_errors: yes
-  when: rhel7cis_time_Synchronization == "ntp"
+  when: rhel8cis_time_Synchronization == "ntp"
   tags:
       - level1
       - audit
@@ -193,7 +193,7 @@
   check_mode: no
   changed_when: no
   ignore_errors: yes
-  when: rhel7cis_time_Synchronization == "chrony"
+  when: rhel8cis_time_Synchronization == "chrony"
   tags:
       - level1
       - audit

@@ -8,8 +8,8 @@
   notify:
       - sysctl flush ipv4 route table
   when:
-      - not rhel7cis_is_router
-      - rhel7cis_rule_3_1_1|bool
+      - not rhel8cis_is_router
+      - rhel8cis_rule_3_1_1|bool
   tags:
       - level1
       - sysctl
@@ -30,8 +30,8 @@
   notify:
       - sysctl flush ipv4 route table
   when:
-      - not rhel7cis_is_router
-      - rhel7cis_rule_3_1_2|bool
+      - not rhel8cis_is_router
+      - rhel8cis_rule_3_1_2|bool
   tags:
       - level1
       - sysctl
@@ -52,7 +52,7 @@
   notify:
       - sysctl flush ipv4 route table
   when:
-      - rhel7cis_rule_3_2_1|bool
+      - rhel8cis_rule_3_2_1|bool
   tags:
       - level1
       - sysctl
@@ -73,7 +73,7 @@
   notify:
       - sysctl flush ipv4 route table
   when:
-      - rhel7cis_rule_3_2_2|bool
+      - rhel8cis_rule_3_2_2|bool
   tags:
       - level1
       - sysctl
@@ -94,7 +94,7 @@
   notify:
       - sysctl flush ipv4 route table
   when:
-      - rhel7cis_rule_3_2_3|bool
+      - rhel8cis_rule_3_2_3|bool
   tags:
       - level1
       - sysctl
@@ -115,7 +115,7 @@
   notify:
       - sysctl flush ipv4 route table
   when:
-      - rhel7cis_rule_3_2_4|bool
+      - rhel8cis_rule_3_2_4|bool
   tags:
       - level1
       - sysctl
@@ -132,7 +132,7 @@
   notify:
       - sysctl flush ipv4 route table
   when:
-      - rhel7cis_rule_3_2_5|bool
+      - rhel8cis_rule_3_2_5|bool
   tags:
       - level1
       - sysctl
@@ -149,7 +149,7 @@
   notify:
       - sysctl flush ipv4 route table
   when:
-      - rhel7cis_rule_3_2_6|bool
+      - rhel8cis_rule_3_2_6|bool
   tags:
       - level1
       - sysctl
@@ -170,7 +170,7 @@
   notify:
       - sysctl flush ipv4 route table
   when:
-      - rhel7cis_rule_3_2_7|bool
+      - rhel8cis_rule_3_2_7|bool
   tags:
       - level1
       - sysctl
@@ -187,7 +187,7 @@
   notify:
       - sysctl flush ipv4 route table
   when:
-      - rhel7cis_rule_3_2_8|bool
+      - rhel8cis_rule_3_2_8|bool
   tags:
       - level1
       - sysctl
@@ -208,8 +208,8 @@
   notify:
       - sysctl flush ipv6 route table
   when:
-      - rhel7cis_ipv6_required | bool
-      - rhel7cis_rule_3_2_9|bool
+      - rhel8cis_ipv6_required | bool
+      - rhel8cis_rule_3_2_9|bool
   tags:
       - level1
       - sysctl
@@ -223,7 +223,7 @@
       line: "install dccp /bin/true"
       create: yes
   when:
-      - rhel7cis_rule_3_3_1|bool
+      - rhel8cis_rule_3_3_1|bool
   tags:
       - level1
       - patch
@@ -236,7 +236,7 @@
       line: "install sctp /bin/true"
       create: yes
   when:
-      - rhel7cis_rule_3_3_2|bool
+      - rhel8cis_rule_3_3_2|bool
   tags:
       - level1
       - patch
@@ -249,7 +249,7 @@
       line: "install rds /bin/true"
       create: yes
   when:
-      - rhel7cis_rule_3_3_3|bool
+      - rhel8cis_rule_3_3_3|bool
   tags:
       - level1
       - patch
@@ -262,7 +262,7 @@
       line: "install tipc /bin/true"
       create: yes
   when:
-      - rhel7cis_rule_3_3_4|bool
+      - rhel8cis_rule_3_3_4|bool
   tags:
       - level1
       - patch
@@ -272,7 +272,7 @@
   yum:
       name: firewalld
       state: present
-  when: rhel7cis_firewall == "firewalld"
+  when: rhel8cis_firewall == "firewalld"
   notify: restart firewalld
   tags:
       - level1
@@ -284,7 +284,7 @@
       name: firewalld
       state: started
       enabled: yes
-  when: rhel7cis_firewall == "firewalld"
+  when: rhel8cis_firewall == "firewalld"
   tags:
       - level1
       - patch
@@ -295,8 +295,8 @@
       name: systemctl --now mask iptables
       state: present
   when:
-      - rhel7cis_firewall == "iptables"
-      - rhel7cis_rule_3_4_2_2|bool
+      - rhel8cis_firewall == "iptables"
+      - rhel8cis_rule_3_4_2_2|bool
   tags:
       - level1
       - patch
@@ -308,8 +308,8 @@
       state: stopped
       enabled: no
   when:
-      - rhel7cis_firewall == "iptables"
-      - rhel7cis_rule_3_4_2_2|bool
+      - rhel8cis_firewall == "iptables"
+      - rhel8cis_rule_3_4_2_2|bool
   tags:
       - level1
       - patch
@@ -321,8 +321,8 @@
       regexp: "^DefaultZone"
       line: "DefaultZone=drop"
   when:
-      - rhel7cis_firewall == "firewalld"
-      - rhel7cis_rule_3_4_3_6|bool
+      - rhel8cis_firewall == "firewalld"
+      - rhel8cis_rule_3_4_3_6|bool
   tags:
       - level1
       - patch
@@ -334,8 +334,8 @@
       zone: drop
       permanent: true
   when:
-      - rhel7cis_firewall == "firewalld"
-      - rhel7cis_rule_3_4_3_6|bool
+      - rhel8cis_firewall == "firewalld"
+      - rhel8cis_rule_3_4_3_6|bool
       - ansible_connection != 'docker'
   tags:
       - level1
@@ -346,8 +346,8 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_firewall == "iptables"
-      - rhel7cis_rule_3_4_3_6|bool
+      - rhel8cis_firewall == "iptables"
+      - rhel8cis_rule_3_4_3_6|bool
   tags:
       - level1
       - patch
@@ -358,8 +358,8 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_firewall == "iptables"
-      - rhel7cis_rule_3_6_3|bool
+      - rhel8cis_firewall == "iptables"
+      - rhel8cis_rule_3_6_3|bool
   tags:
       - level1
       - patch
@@ -370,8 +370,8 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_firewall == "iptables"
-      - rhel7cis_rule_3_6_4|bool
+      - rhel8cis_firewall == "iptables"
+      - rhel8cis_rule_3_6_4|bool
   tags:
       - level1
       - patch
@@ -386,10 +386,10 @@
       permanent: true
       immediate: true
   notify: restart firewalld
-  with_items: "{{ rhel7cis_firewall_services }}"
+  with_items: "{{ rhel8cis_firewall_services }}"
   when:
-      - rhel7cis_firewall == "firewalld"
-      - rhel7cis_rule_3_4_4_1_4|bool
+      - rhel8cis_firewall == "firewalld"
+      - rhel8cis_rule_3_4_4_1_4|bool
       - ansible_connection != 'docker'
   tags:
       - level1
@@ -400,8 +400,8 @@
   command: /bin/true
   changed_when: no
   when:
-      - rhel7cis_firewall == "iptables"
-      - rhel7cis_rule_3_4_4_1_4|bool
+      - rhel8cis_firewall == "iptables"
+      - rhel8cis_rule_3_4_4_1_4|bool
   tags:
       - level1
       - patch

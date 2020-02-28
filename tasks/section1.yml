@@ -5,7 +5,7 @@
       line: "install cramfs /bin/true"
       create: yes
   when:
-      - rhel7cis_rule_1_1_1_1|bool
+      - rhel8cis_rule_1_1_1_1|bool
   tags:
       - level1
       - scored
@@ -18,7 +18,7 @@
       name: cramfs
       state: absent
   when:
-      - rhel7cis_rule_1_1_1_1|bool
+      - rhel8cis_rule_1_1_1_1|bool
       - ansible_connection != 'docker'
   tags:
       - level1
@@ -34,7 +34,7 @@
       line: "install squashfs /bin/true"
       create: yes
   when:
-      - rhel7cis_rule_1_1_1_3|bool
+      - rhel8cis_rule_1_1_1_3|bool
   tags:
       - level1
       - scored
@@ -47,7 +47,7 @@
       name: squashfs
       state: absent
   when:
-      - rhel7cis_rule_1_1_1_3|bool
+      - rhel8cis_rule_1_1_1_3|bool
       - ansible_connection != 'docker'
   tags:
       - level1
@@ -63,7 +63,7 @@
       line: "install udf /bin/true"
       create: yes
   when:
-      - rhel7cis_rule_1_1_1_4|bool
+      - rhel8cis_rule_1_1_1_4|bool
   tags:
       - level1
       - scored
@@ -76,7 +76,7 @@
       name: udf
       state: absent
   when:
-      - rhel7cis_rule_1_1_1_4|bool
+      - rhel8cis_rule_1_1_1_4|bool
       - ansible_connection != 'docker'
   tags:
       - level1
@@ -92,7 +92,7 @@
       line: "install vfat /bin/true"
       create: yes
   when:
-      - rhel7cis_rule_1_1_1_2|bool
+      - rhel8cis_rule_1_1_1_2|bool
   tags:
       - level1
       - scored
@@ -105,7 +105,7 @@
       name: vfat
       state: absent
   when:
-      - rhel7cis_rule_1_1_1_2|bool
+      - rhel8cis_rule_1_1_1_2|bool
       - ansible_connection != 'docker'
   tags:
       - level2
@@ -122,7 +122,7 @@
       masked: no
       state: started
   when:
-      - rhel7cis_rule_1_1_2|bool
+      - rhel8cis_rule_1_1_2|bool
   tags:
       - level2
       - scored
@@ -141,9 +141,9 @@
       mode: 0644
   notify: systemd restart tmp.mount
   when:
-      - rhel7cis_rule_1_1_3|bool
-      - rhel7cis_rule_1_1_4|bool
-      - rhel7cis_rule_1_1_5|bool
+      - rhel8cis_rule_1_1_3|bool
+      - rhel8cis_rule_1_1_4|bool
+      - rhel8cis_rule_1_1_5|bool
   tags:
       - level1
       - scored
@@ -160,7 +160,7 @@
   changed_when: no
   failed_when: no
   when:
-      - rhel7cis_rule_1_1_6|bool
+      - rhel8cis_rule_1_1_6|bool
   tags:
       - level2
       - scored
@@ -174,7 +174,7 @@
   changed_when: no
   failed_when: no
   when:
-      - rhel7cis_rule_1_1_7|bool
+      - rhel8cis_rule_1_1_7|bool
   tags:
       - level2
       - scored
@@ -187,15 +187,15 @@
          SCORED | 1.1.10 | PATCH | Ensure noexec option set on /var/tmp partition"
   mount:
       name: /var/tmp
-      src: "{{ rhel7cis_vartmp['source'] }}"
+      src: "{{ rhel8cis_vartmp['source'] }}"
       state: present
-      fstype: "{{ rhel7cis_vartmp['fstype'] }}"
-      opts: "{{ rhel7cis_vartmp['opts'] }}"
+      fstype: "{{ rhel8cis_vartmp['fstype'] }}"
+      opts: "{{ rhel8cis_vartmp['opts'] }}"
   when:
-      - rhel7cis_vartmp['enabled']
-      - rhel7cis_rule_1_1_8|bool
-      - rhel7cis_rule_1_1_9|bool
-      - rhel7cis_rule_1_1_10|bool
+      - rhel8cis_vartmp['enabled']
+      - rhel8cis_rule_1_1_8|bool
+      - rhel8cis_rule_1_1_9|bool
+      - rhel8cis_rule_1_1_10|bool
   tags:
       - level1
       - scored
@@ -210,7 +210,7 @@
   changed_when: no
   failed_when: no
   when:
-      - rhel7cis_rule_1_1_11|bool
+      - rhel8cis_rule_1_1_11|bool
   tags:
       - level2
       - scored
@@ -224,7 +224,7 @@
   changed_when: no
   failed_when: no
   when:
-      - rhel7cis_rule_1_1_12|bool
+      - rhel8cis_rule_1_1_12|bool
   tags:
       - level2
       - scored
@@ -238,7 +238,7 @@
   changed_when: no
   failed_when: no
   when:
-      - rhel7cis_rule_1_1_13|bool
+      - rhel8cis_rule_1_1_13|bool
   tags:
       - level2
       - scored
@@ -254,7 +254,7 @@
       fstype: "{{ item.fstype }}"
       opts: "nodev"
   when:
-      - rhel7cis_rule_1_1_14|bool
+      - rhel8cis_rule_1_1_14|bool
       - item.mount == "/home"
   with_items: "{{ ansible_mounts }}"
   tags:
@@ -273,9 +273,9 @@
       fstype: tmpfs
       opts: "defaults,nodev,nosuid,noexec"
   when:
-      - rhel7cis_rule_1_1_15|bool
-      - rhel7cis_rule_1_1_16|bool
-      - rhel7cis_rule_1_1_17|bool
+      - rhel8cis_rule_1_1_15|bool
+      - rhel8cis_rule_1_1_16|bool
+      - rhel8cis_rule_1_1_17|bool
   tags:
       - level1
       - scored
@@ -289,7 +289,7 @@
       msg: "--> Not relevant"
   changed_when: no
   when:
-      - rhel7cis_rule_1_1_18|bool
+      - rhel8cis_rule_1_1_18|bool
   tags:
       - level1
       - notscored
@@ -301,7 +301,7 @@
       msg: "--> Not relevant"
   changed_when: no
   when:
-      - rhel7cis_rule_1_1_19|bool
+      - rhel8cis_rule_1_1_19|bool
   tags:
       - level1
       - notscored
@@ -313,7 +313,7 @@
       msg: "--> Not relevant"
   changed_when: no
   when:
-      - rhel7cis_rule_1_1_20|bool
+      - rhel8cis_rule_1_1_20|bool
   tags:
       - level1
       - notscored
@@ -326,7 +326,7 @@
   failed_when: no
   #when: sticky_bit_on_worldwritable_dirs_audit.rc == '0'
   when:
-      - rhel7cis_rule_1_1_21|bool
+      - rhel8cis_rule_1_1_21|bool
   tags:
       - level1
       - level2
@@ -338,9 +338,9 @@
       name: autofs
       enabled: no
   when:
-      - not rhel7cis_allow_autofs
+      - not rhel8cis_allow_autofs
       - autofs_service_status.stdout == "loaded"
-      - rhel7cis_rule_1_1_22|bool
+      - rhel8cis_rule_1_1_22|bool
   tags:
       - level1
       - patch
@@ -354,7 +354,7 @@
   changed_when: no
   failed_when: no
   when:
-      - rhel7cis_rule_1_2_5|bool
+      - rhel8cis_rule_1_2_5|bool
   tags:
       - level1
       - notscored
@@ -368,7 +368,7 @@
       regexp: "^gpgcheck=0"
       replace: "gpgcheck=1"
   when:
-      - rhel7cis_rule_1_2_5|bool
+      - rhel8cis_rule_1_2_5|bool
   tags:
       - level1
       - scored
@@ -382,7 +382,7 @@
   register: yum_repos
   changed_when: no
   when:
-      - rhel7cis_rule_1_2_4|bool
+      - rhel8cis_rule_1_2_4|bool
   tags:
       - level1
       - scored
@@ -397,7 +397,7 @@
   with_items:
       - "{{ yum_repos.files }}"
   when:
-      - rhel7cis_rule_1_2_4|bool
+      - rhel8cis_rule_1_2_4|bool
   tags:
       - level1
       - scored
@@ -407,7 +407,7 @@
 - name: "NOTSCORED | 1.2.3 | PATCH | Ensure GPG keys are configured"
   command: gpg --quiet --with-fingerprint /etc/pki/rpm-gpg/RPM-GPG-KEY-{{ ansible_distribution|lower }}-release
   when:
-      - rhel7cis_rule_1_2_3|bool
+      - rhel8cis_rule_1_2_3|bool
       - ansible_distribution == "RedHat"
   tags:
       - level1
@@ -421,7 +421,7 @@
   failed_when: no
   when:
       - ansible_distribution == "RedHat"
-      - rhel7cis_rule_1_2_1|bool
+      - rhel8cis_rule_1_2_1|bool
   tags:
       - level1
       - notscored
@@ -434,8 +434,8 @@
       state: stopped
       enabled: no
   when:
-      - ansible_distribution == "RedHat" and rhnsd_service_status.stdout == "loaded" and not rhel7cis_rhnsd_required
-      - rhel7cis_rule_1_2_2|bool
+      - ansible_distribution == "RedHat" and rhnsd_service_status.stdout == "loaded" and not rhel8cis_rhnsd_required
+      - rhel8cis_rule_1_2_2|bool
   tags:
       - level2
       - notscored
@@ -447,7 +447,7 @@
       name: aide
       state: present
   when:
-      - rhel7cis_rule_1_4_1|bool
+      - rhel8cis_rule_1_4_1|bool
   tags:
       - level1
       - scored
@@ -464,8 +464,8 @@
   async: 45
   poll: 0
   when:
-      - rhel7cis_config_aide|bool
-      - rhel7cis_rule_1_4_1|bool
+      - rhel8cis_config_aide|bool
+      - rhel8cis_rule_1_4_1|bool
   tags:
       - level1
       - scored
@@ -476,16 +476,16 @@
 - name: "SCORED | 1.4.2 | PATCH | Ensure filesystem integrity is regularly checked"
   cron:
       name: Run AIDE integrity check
-      cron_file: "{{ rhel7cis_aide_cron['cron_file'] }}"
-      user: "{{ rhel7cis_aide_cron['cron_user'] }}"
-      minute: "{{ rhel7cis_aide_cron['aide_minute'] | default('0') }}"
-      hour: "{{ rhel7cis_aide_cron['aide_hour'] | default('5') }}"
-      day: "{{ rhel7cis_aide_cron['aide_day'] | default('*') }}"
-      month: "{{ rhel7cis_aide_cron['aide_month'] | default('*') }}"
-      weekday: "{{ rhel7cis_aide_cron['aide_weekday'] | default('*') }}"
-      job: "{{ rhel7cis_aide_cron['aide_job'] }}"
+      cron_file: "{{ rhel8cis_aide_cron['cron_file'] }}"
+      user: "{{ rhel8cis_aide_cron['cron_user'] }}"
+      minute: "{{ rhel8cis_aide_cron['aide_minute'] | default('0') }}"
+      hour: "{{ rhel8cis_aide_cron['aide_hour'] | default('5') }}"
+      day: "{{ rhel8cis_aide_cron['aide_day'] | default('*') }}"
+      month: "{{ rhel8cis_aide_cron['aide_month'] | default('*') }}"
+      weekday: "{{ rhel8cis_aide_cron['aide_weekday'] | default('*') }}"
+      job: "{{ rhel8cis_aide_cron['aide_job'] }}"
   when:
-      - rhel7cis_rule_1_4_2|bool
+      - rhel8cis_rule_1_4_2|bool
   tags:
       - level1
       - scored
@@ -499,7 +499,7 @@
       path: /etc/grub2.cfg
   register: grub_cfg
   when:
-      - rhel7cis_rule_1_5_1|bool
+      - rhel8cis_rule_1_5_1|bool
   tags:
       - level1
       - scored
@@ -515,7 +515,7 @@
       mode: 0600
   when:
       - grub_cfg.stat.exists and grub_cfg.stat.islnk
-      - rhel7cis_rule_1_5_1|bool
+      - rhel8cis_rule_1_5_1|bool
   tags:
       - level1
       - scored
@@ -525,11 +525,11 @@
 
 - name: "SCORED | 1.5.2 | PATCH | Ensure bootloader password is set"
   grub_crypt:
-      password: "{{ rhel7cis_bootloader_password }}"
+      password: "{{ rhel8cis_bootloader_password }}"
   register: grub_pass
   when:
-      - rhel7cis_set_boot_pass|bool
-      - rhel7cis_rule_1_5_2|bool
+      - rhel8cis_set_boot_pass|bool
+      - rhel8cis_rule_1_5_2|bool
   tags:
       - level1
       - scored
@@ -543,9 +543,9 @@
       content: "GRUB2_PASSWORD={{ grub_pass.passhash }}"
   notify: generate new grub config
   when:
-      - rhel7cis_set_boot_pass|bool
+      - rhel8cis_set_boot_pass|bool
       - grub_pass is defined and grub_pass.passhash is defined and grub_pass.passhash != ''
-      - rhel7cis_rule_1_5_2|bool
+      - rhel8cis_rule_1_5_2|bool
   tags:
       - level1
       - scored
@@ -561,7 +561,7 @@
             regexp: '/sbin/sulogin'
             line: 'ExecStart=-/bin/sh -c \"/usr/sbin/sulogin; /usr/bin/systemctl --fail --no-block default\"'
         when:
-            - rhel7cis_rule_1_5_3|bool
+            - rhel8cis_rule_1_5_3|bool
             - ansible_distribution_major_version == 7
         tags:
             - level1
@@ -574,7 +574,7 @@
             regexp: '/sbin/sulogin'
             line: 'ExecStart=-/bin/sh -c \"/usr/sbin/sulogin; /usr/bin/systemctl --fail --no-block default\"'
         when:
-            - rhel7cis_rule_1_5_3|bool
+            - rhel8cis_rule_1_5_3|bool
             - ansible_distribution_major_version == 7
         tags:
             - level1
@@ -590,7 +590,7 @@
       line: '*                hard    core            0'
       insertbefore: '^# End of file'
   when:
-      - rhel7cis_rule_1_6_1|bool
+      - rhel8cis_rule_1_6_1|bool
   tags:
       - level1
       - scored
@@ -607,7 +607,7 @@
       sysctl_set: yes
       ignoreerrors: yes
   when:
-      - rhel7cis_rule_1_6_1|bool
+      - rhel8cis_rule_1_6_1|bool
   tags:
       - level1
       - scored
@@ -624,7 +624,7 @@
       sysctl_set: yes
       ignoreerrors: yes
   when:
-      - rhel7cis_rule_1_6_2|bool
+      - rhel8cis_rule_1_6_2|bool
   tags:
       - level1
       - scored
@@ -640,7 +640,7 @@
   ignore_errors: yes
   notify: generate new grub config
   when:
-      - rhel7cis_rule_1_7_1_2|bool
+      - rhel8cis_rule_1_7_1_2|bool
   tags:
       - level2
       - scored
@@ -650,11 +650,11 @@
 - name: "SCORED | 1.7.1.4 | PATCH | Ensure the SELinux state is enforcing"
   selinux:
       conf: /etc/selinux/config
-      policy: "{{ rhel7cis_selinux_pol }}"
+      policy: "{{ rhel8cis_selinux_pol }}"
       state: enforcing
   when:
-      - not rhel7cis_selinux_disable|bool
-      - rhel7cis_rule_1_7_1_4|bool
+      - not rhel8cis_selinux_disable|bool
+      - rhel8cis_rule_1_7_1_4|bool
   tags:
       - level2
       - scored
@@ -665,11 +665,11 @@
 - name: "SCORED | 1.7.1.3 | PATCH | Ensure SELinux policy is configured"
   selinux:
       conf: /etc/selinux/config
-      policy: "{{ rhel7cis_selinux_pol }}"
+      policy: "{{ rhel8cis_selinux_pol }}"
       state: enforcing
   when:
-      - not rhel7cis_selinux_disable|bool
-      - rhel7cis_rule_1_7_1_3|bool
+      - not rhel8cis_selinux_disable|bool
+      - rhel8cis_rule_1_7_1_3|bool
   tags:
       - level2
       - scored
@@ -682,7 +682,7 @@
       name: setroubleshoot
       state: absent
   when:
-      - rhel7cis_rule_1_7_1_6|bool
+      - rhel8cis_rule_1_7_1_6|bool
   tags:
       - level2
       - scored
@@ -695,7 +695,7 @@
       name: mcstrans
       state: absent
   when:
-      - rhel7cis_rule_1_7_1_7|bool
+      - rhel8cis_rule_1_7_1_7|bool
   tags:
       - level2
       - scored
@@ -707,7 +707,7 @@
       name: libselinux
       state: present
   when:
-      - rhel7cis_rule_1_7_1_1|bool
+      - rhel8cis_rule_1_7_1_1|bool
   tags:
       - level2
       - scored
@@ -719,7 +719,7 @@
       src: etc/motd.j2
       dest: /etc/motd
   when:
-      - rhel7cis_rule_1_8_1_1|bool
+      - rhel8cis_rule_1_8_1_1|bool
   tags:
       - level1
       - banner
@@ -731,7 +731,7 @@
       src: etc/issue.j2
       dest: /etc/issue
   when:
-      - rhel7cis_rule_1_8_1_2|bool
+      - rhel8cis_rule_1_8_1_2|bool
   tags:
       - level1
       - patch
@@ -742,7 +742,7 @@
       src: etc/issue.net.j2
       dest: /etc/issue.net
   when:
-      - rhel7cis_rule_1_8_1_3|bool
+      - rhel8cis_rule_1_8_1_3|bool
   tags:
       - level1
       - banner
@@ -757,7 +757,7 @@
       group: root
       mode: 0644
   when:
-      - rhel7cis_rule_1_8_1_4|bool
+      - rhel8cis_rule_1_8_1_4|bool
   tags:
       - level1
       - perms
@@ -772,7 +772,7 @@
       group: root
       mode: 0644
   when:
-      - rhel7cis_rule_1_8_1_5|bool
+      - rhel8cis_rule_1_8_1_5|bool
   tags:
       - level1
       - perms
@@ -787,7 +787,7 @@
       group: root
       mode: 0644
   when:
-      - rhel7cis_rule_1_8_1_6|bool
+      - rhel8cis_rule_1_8_1_6|bool
   tags:
       - level1
       - perms
@@ -810,10 +810,10 @@
       - { file: '/etc/dconf/profile/gdm', regexp: 'file-db', line: 'file-db:/usr/share/gdm/greeter-dconf-defaults' }
       - { file: '/etc/dconf/db/gdm.d/01-banner-message', regexp: '\[org\/gnome\/login-screen\]', line: '[org/gnome/login-screen]' }
       - { file: '/etc/dconf/db/gdm.d/01-banner-message', regexp: 'banner-message-enable', line: 'banner-message-enable=true' }
-      - { file: '/etc/dconf/db/gdm.d/01-banner-message', regexp: 'banner-message-text', line: "banner-message-text='{{ rhel7cis_warning_banner }}' " }
+      - { file: '/etc/dconf/db/gdm.d/01-banner-message', regexp: 'banner-message-text', line: "banner-message-text='{{ rhel8cis_warning_banner }}' " }
   when:
-      - rhel7cis_gui|bool
-      - rhel7cis_rule_1_8_2|bool
+      - rhel8cis_gui|bool
+      - rhel8cis_rule_1_8_2|bool
   tags:
       - level1
       - level2

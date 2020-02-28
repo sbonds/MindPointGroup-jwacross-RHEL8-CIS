@@ -270,7 +270,7 @@
   check_mode: no
   changed_when: no
   ignore_errors: yes
-  when: rhel7cis_firewall == "firewalld"
+  when: rhel8cis_firewall == "firewalld"
   tags:
       - level1
       - level2
@@ -285,7 +285,7 @@
   check_mode: no
   changed_when: no
   ignore_errors: yes
-  when: rhel7cis_firewall == "iptables"
+  when: rhel8cis_firewall == "iptables"
   tags:
       - level1
       - level2
@@ -299,7 +299,7 @@
   check_mode: no
   changed_when: no
   ignore_errors: yes
-  when: rhel7cis_firewall == "iptables"
+  when: rhel8cis_firewall == "iptables"
   tags:
       - level1
       - level2
@@ -312,7 +312,7 @@
   check_mode: no
   changed_when: no
   ignore_errors: yes
-  when: rhel7cis_firewall == "iptables"
+  when: rhel8cis_firewall == "iptables"
   tags:
       - level1
       - level2
@@ -325,7 +325,7 @@
   check_mode: no
   changed_when: no
   ignore_errors: yes
-  when: rhel7cis_firewall == "iptables"
+  when: rhel8cis_firewall == "iptables"
   tags:
       - level1
       - level2
@@ -339,7 +339,7 @@
   check_mode: no
   changed_when: no
   ignore_errors: yes
-  when: rhel7cis_firewall == "iptables"
+  when: rhel8cis_firewall == "iptables"
   tags:
       - level1
       - level2
@@ -352,7 +352,7 @@
   check_mode: no
   changed_when: no
   ignore_errors: yes
-  when: rhel7cis_firewall == "iptables"
+  when: rhel8cis_firewall == "iptables"
   tags:
       - level1
       - level2
@@ -366,7 +366,7 @@
   check_mode: no
   changed_when: no
   ignore_errors: yes
-  when: rhel7cis_firewall == "iptables"
+  when: rhel8cis_firewall == "iptables"
   tags:
       - level1
       - level2
@@ -380,7 +380,7 @@
   check_mode: no
   changed_when: no
   ignore_errors: yes
-  when: rhel7cis_firewall == "iptables"
+  when: rhel8cis_firewall == "iptables"
   tags:
       - level1
       - level2

@@ -105,7 +105,7 @@
       name=dhcp
       state=absent
   when:
-      not rhel7cis_dhcp
+      not rhel8cis_dhcp
   tags:
       - level1
       - level2
@@ -189,7 +189,7 @@
       name=openldap-servers
       state=absent
   when:
-      not rhel7cis_ldap
+      not rhel8cis_ldap
   tags:
       - level1
       - level2
@@ -223,7 +223,7 @@
 - name: "NOTSCORED | 3.8 | PATCH | Disable NFS and RPC"
   command: systemctl disable nfs
   when:
-      not rhel7cis_nfs
+      not rhel8cis_nfs
   tags:
       - level1
       - level2
@@ -233,7 +233,7 @@
 - name: "NOTSCORED | 3.8 | PATCH | Disable NFS and RPC"
   command: systemctl disable rpcbind
   when:
-      not rhel7cis_rpc
+      not rhel8cis_rpc
   tags:
       - level1
       - level2
@@ -257,7 +257,7 @@
       name=bind
       state=absent
   when:
-      not rhel7cis_bind
+      not rhel8cis_bind
   tags:
       - level1
       - level2
@@ -281,7 +281,7 @@
       name=vsftpd
       state=absent
   when:
-      not rhel7cis_vsftpd
+      not rhel8cis_vsftpd
   tags:
       - level1
       - level2
@@ -305,7 +305,7 @@
       name=httpd
       state=absent
   when:
-      not rhel7cis_httpd
+      not rhel8cis_httpd
   tags:
       - level1
       - level2
@@ -329,7 +329,7 @@
       name=dovecot
       state=absent
   when:
-      not rhel7cis_dovecot
+      not rhel8cis_dovecot
   tags:
       - level1
       - level2
@@ -353,7 +353,7 @@
       name=samba
       state=absent
   when:
-      not rhel7cis_samba
+      not rhel8cis_samba
   tags:
       - level1
       - level2
@@ -377,7 +377,7 @@
       name=squid
       state=absent
   when:
-      not rhel7cis_squid
+      not rhel8cis_squid
   tags:
       - level1
       - level2
@@ -401,7 +401,7 @@
       name=net-snmp
       state=absent
   when:
-      not rhel7cis_net_snmp
+      not rhel8cis_net_snmp
   tags:
       - level1
       - level2
