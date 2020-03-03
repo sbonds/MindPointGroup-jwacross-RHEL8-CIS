@@ -339,6 +339,8 @@
       mode: 0600
       dest: "~{{ item }}/.netrc"
   with_items: "{{ users.stdout_lines }}"
+  when:
+      - rhel8cis_rule_6_2_12|bool
   tags:
       - level1
       - level2
