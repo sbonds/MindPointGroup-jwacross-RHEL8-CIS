@@ -276,7 +276,7 @@
       state: present
       dest: /etc/ssh/sshd_config
       regexp: '^CRYPTO_POLICY'
-      line: "CRYPTO_POLICY {{ rhel8cis_sshd['crypto'] }}"
+      line: "# CRYPTO_POLICY="
   when:
       - rhel8cis_rule_5_2_20|bool
   tags:
