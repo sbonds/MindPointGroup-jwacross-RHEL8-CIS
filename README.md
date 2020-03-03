@@ -1,4 +1,4 @@
-RHEL 7 CIS STIG
+RHEL 8 CIS STIG
 ================
 
 [![Build Status](https://travis-ci.org/MindPointGroup/RHEL8-CIS.svg?branch=devel)](https://travis-ci.org/MindPointGroup/RHEL8-CIS)
