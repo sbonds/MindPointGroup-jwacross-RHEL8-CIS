@@ -277,6 +277,7 @@ rhel8cis_rule_6_2_16: true
 rhel8cis_rule_6_2_17: true
 rhel8cis_rule_6_2_18: true
 rhel8cis_rule_6_2_19: true
+rhel8cis_rule_6_2_20: true
 
 # Service configuration booleans set true to keep service
 rhel8cis_avahi_server: false
