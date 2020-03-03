@@ -95,7 +95,6 @@
   yum:
       state: absent
       name:
-          - "@X Window System"
           - "xorg-x11*"
   when:
       - not rhel8cis_xwindows_required
