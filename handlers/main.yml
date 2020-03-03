@@ -1,5 +1,5 @@
 ---
-# handlers file for RHEL7-CIS
+# handlers file for RHEL8-CIS
 
 - name: sysctl flush ipv4 route table
   become: yes

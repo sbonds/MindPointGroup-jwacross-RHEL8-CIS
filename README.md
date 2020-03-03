@@ -1,8 +1,8 @@
 RHEL 7 CIS STIG
 ================
 
-[![Build Status](https://travis-ci.org/MindPointGroup/RHEL7-CIS.svg?branch=devel)](https://travis-ci.org/MindPointGroup/RHEL7-CIS)
-[![Ansible Role](https://img.shields.io/ansible/role/16089.svg)](https://galaxy.ansible.com/MindPointGroup/RHEL7-CIS/)
+[![Build Status](https://travis-ci.org/MindPointGroup/RHEL8-CIS.svg?branch=devel)](https://travis-ci.org/MindPointGroup/RHEL8-CIS)
+[![Ansible Role](https://img.shields.io/ansible/role/16089.svg)](https://galaxy.ansible.com/MindPointGroup/RHEL8-CIS/)
 
 Configure RHEL/Centos 7 machine to be [CIS](https://www.cisecurity.org/cis-benchmarks/) compliant. Level 1 and 2 findings will be corrected by default.
 
@@ -17,7 +17,7 @@ If you want to install this via the `ansible-galaxy` command you'll need to run 
 With this in the file requirements.yml:
 
 ```
-- src: https://github.com/MindPointGroup/RHEL7-CIS.git
+- src: https://github.com/MindPointGroup/RHEL8-CIS.git
 ```
 
 Based on [CIS RedHat Enterprise Linux 7 Benchmark v2.1.1 - 01-31-2017 ](https://community.cisecurity.org/collab/public/index.php).
@@ -162,7 +162,7 @@ Ansible > 2.2
 Example Playbook
 -------------------------
 
-This sample playbook should be run in a folder that is above the main RHEL7-CIS / RHEL7-CIS-devel folder.
+This sample playbook should be run in a folder that is above the main RHEL8-CIS / RHEL8-CIS-devel folder.
 
 ```
 - name: Harden Server
@@ -170,7 +170,7 @@ This sample playbook should be run in a folder that is above the main RHEL7-CIS 
   become: yes
 
   roles:
-    - RHEL7-CIS
+    - RHEL8-CIS
 ```
 
 Tags

@@ -11,4 +11,4 @@
         state: present
 
   roles:
-    - role: RHEL7-CIS
+    - role: RHEL8-CIS

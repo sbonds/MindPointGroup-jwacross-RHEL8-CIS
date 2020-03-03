@@ -1,5 +1,5 @@
 ---
-# defaults file for RHEL7-CIS
+# defaults file for RHEL8-CIS
 rhel8cis_skip_for_travis: false
 
 rhel8cis_notauto: false
