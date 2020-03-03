@@ -271,20 +271,6 @@
       - patch
       - rule_5.2.12
 
-- name: "SCORED | 5.2.20 | PATCH | Ensure system-wide crypto policy is not over-ridden"
-  lineinfile:
-      state: present
-      dest: /etc/ssh/sshd_config
-      regexp: '^CRYPTO_POLICY'
-      line: "# CRYPTO_POLICY="
-  when:
-      - rhel8cis_rule_5_2_20|bool
-  tags:
-      - level1
-      - level2
-      - patch
-      - rule_5.2.20
-
 - name: "SCORED | 5.2.13 | PATCH | Ensure SSH Idle Timeout Interval is configured"
   block:
       - name: "SCORED | 5.2.13 | PATCH | Ensure SSH Idle Timeout Interval is configured"
@@ -321,6 +307,20 @@
       - level2
       - patch
       - rule_5.2.14
+
+- name: "SCORED | 5.2.20 | PATCH | Ensure system-wide crypto policy is not over-ridden"
+  lineinfile:
+      state: present
+      dest: /etc/sysconfig/sshd
+      regexp: '^CRYPTO_POLICY'
+      line: "# CRYPTO_POLICY="
+  when:
+      - rhel8cis_rule_5_2_20|bool
+  tags:
+      - level1
+      - level2
+      - patch
+      - rule_5.2.20
 
 - name: "SCORED | 5.2.2 | PATCH | Ensure SSH access is limited"
   block:
