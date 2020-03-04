@@ -12,8 +12,7 @@
       - skip_ansible_lint
 
 - name: "SCORED | 1.1 | PATCH | Ensure system-wide crypto policy is not legacy"
-  tasks:
-      command: update-crypto-policies --set DEFAULT && update-crypto-policies
+  command: update-crypto-policies --set DEFAULT && update-crypto-policies
   when:
       - rhel8cis_rule_1_1|bool
   tags:
