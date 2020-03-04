@@ -1,3 +1,28 @@
+- name: "SCORED | 1.9 | PATCH | Ensure updates, patches, and additional security software are installed"
+  yum:
+      name: "*"
+      state: latest
+  when:
+      - rhel8cis_rule_1_9|bool
+  tags:
+      - level1
+      - level2
+      - patch
+      - rule_1.9
+      - skip_ansible_lint
+
+- name: "SCORED | 1.1 | PATCH | Ensure system-wide crypto policy is not legacy"
+  tasks:
+      command: update-crypto-policies --set DEFAULT && update-crypto-policies
+  when:
+      - rhel8cis_rule_1_1|bool
+  tags:
+      - level1
+      - level2
+      - patch
+      - rule_1.1
+      - crypto
+
 - name: "SCORED | 1.1.1.1 | PATCH | Ensure mounting of cramfs filesystems is disabled"
   lineinfile:
       dest: /etc/modprobe.d/CIS.conf
