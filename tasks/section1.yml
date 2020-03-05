@@ -502,6 +502,7 @@
       dest: /etc/sudoers
       regexp: "^Defaults logfile"
       line: "Defaults logfile=/var/log/sudo.log"
+  when:
       - rhel8cis_rule_1_3_3|bool
   tags:
       - level1
