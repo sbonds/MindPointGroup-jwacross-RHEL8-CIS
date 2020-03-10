@@ -388,6 +388,7 @@
 
 - name: "SCORED | 1.1.23 | PATCH | Disable USB Storage"
   command: rmmod usb-storage
+  ignoreerrors: yes
   when:
       - rhel8cis_rule_1_1_23|bool
   tags:
