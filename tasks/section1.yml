@@ -386,6 +386,17 @@
       - rule_1.1.23
       - usb
 
+- name: "SCORED | 1.1.23 | PATCH | Disable USB Storage"
+  command: rmmod usb-storage
+  when:
+      - rhel8cis_rule_1_1_23|bool
+  tags:
+      - level1
+      - scored
+      - patch
+      - rule_1.1.23
+      - usb
+
 - name: "NOTSCORED | 1.2.5 | PATCH | Ensure package manager repositories are configured"
   command: yum check-update
   args:
