@@ -416,3 +416,16 @@
       - level2
       - patch
       - rule_3.5
+
+- name: "NOTSCORED | 3.6 | PATCH | Disable IPv6"
+  lineinfile:
+      dest: /etc/default/grub
+      regexp: "^GRUB_CMDLINE_LINUX"
+      line: "GRUB_CMDLINE_LINUX="ipv6.disable=1"
+  command: grub2-mkconfig –o /boot/grub2/grub.cfg
+  when:
+      - rhel8cis_rule_3_6|bool
+  tags:
+      - level2
+      - patch
+      - rule_3.6
