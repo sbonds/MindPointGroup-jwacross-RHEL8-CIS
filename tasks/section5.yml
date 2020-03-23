@@ -389,6 +389,20 @@
       - patch
       - rule_5.2.15
 
+- name: "SCORED | 5.2.17 | PATCH | Ensure SSH AllowTcpForwarding is disabled"
+  lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^AllowTcpForwarding'
+      line: 'AllowTcpForwarding no'
+  when:
+      - rhel8cis_rule_5_2_17|bool
+  tags:
+      - level1
+      - level2
+      - patch
+      - rule_5.2.17
+
 - name: "SCORED | 5.4.1 | PATCH | Ensure password creation requirements are configured"
   lineinfile:
       state: present
