@@ -73,12 +73,9 @@
 - name: "SCORED | 4.1.1.2 | PATCH | Ensure auditd service is enabled"
   service:
       name: auditd
-      state: started
-      enabled: yes
+      state: present
   when:
-      - not rhel8cis_skip_for_travis
       - rhel8cis_rule_4_1_1_2|bool
-      - ansible_connection != 'docker'
   tags:
       - level2
       - auditd
