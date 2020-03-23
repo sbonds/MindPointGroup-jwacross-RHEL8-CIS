@@ -75,7 +75,7 @@
 - name: "SCORED | 4.1.1.2 | PATCH | Ensure auditd service is enabled"
   service:
       name: auditd
-      state: enabled
+      state: started
   when:
       - rhel8cis_rule_4_1_1_2|bool
   tags:
