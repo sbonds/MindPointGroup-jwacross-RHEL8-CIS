@@ -58,6 +58,18 @@
       - patch
       - rule_4.1.2.2
 
+- name: "SCORED | 4.1.1.1 | PATCH | Ensure auditd is installed"
+  yum:
+      name: auditd
+      state: present
+  when:
+      - rhel8cis_rule_4_1_1_1|bool
+  tags:
+      - level1
+      - level2
+      - patch
+      - rule_4.1.1.1
+
 - name: "SCORED | 4.1.1.2 | PATCH | Ensure auditd service is enabled"
   service:
       name: auditd
