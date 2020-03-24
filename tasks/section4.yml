@@ -472,6 +472,45 @@
       - rule_4.2.1.4
       - notimplemented
 
+- name: "SCORED | 4.2.2.1 | PATCH | Ensure journald is configured to send logs to rsyslog"
+  lineinfile:
+      dest: /etc/systemd/journald.conf
+      regexp: '^ForwardToSyslog'
+      line: 'ForwardToSyslog=yes'
+      state: present
+  when:
+      - rhel8cis_rule_4_2_2_1|bool
+  tags:
+      - level1
+      - patch
+      - rule_4.2.2.1
+
+- name: "SCORED | 4.2.2.2 | PATCH | Ensure journald is configured to compress large log files"
+  lineinfile:
+      dest: /etc/systemd/journald.conf
+      regexp: '^Compress'
+      line: 'Compress=yes'
+      state: present
+  when:
+      - rhel8cis_rule_4_2_2_2|bool
+  tags:
+      - level1
+      - patch
+      - rule_4.2.2.2
+
+- name: "SCORED | 4.2.2.3 | PATCH | Ensure journald is configured to write logfiles to persistent disk"
+  lineinfile:
+      dest: /etc/systemd/journald.conf
+      regexp: '^Storage'
+      line: 'Storage=persistent'
+      state: present
+  when:
+      - rhel8cis_rule_4_2_2_3|bool
+  tags:
+      - level1
+      - patch
+      - rule_4.2.2.3
+
 - name: "SCORED | 4.2.3 | PATCH | Ensure permissions on all logfiles are configured"
   command: find /var/log -type f -exec chmod g-wx,o-rwx {} +
   changed_when: no
