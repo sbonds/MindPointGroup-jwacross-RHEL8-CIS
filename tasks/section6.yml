@@ -418,3 +418,12 @@
       - level2
       - patch
       - rule_6.2.18
+
+- name: "SCORED | 6.2.19 | PATCH | Ensure shadow group is empty"
+  command: groupmems -p -g shadow
+  when:
+      - rhel8cis_rule_6_2_19|bool
+  tags:
+      - level1
+      - patch
+      - rule_6.2.19
