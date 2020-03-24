@@ -268,16 +268,15 @@
       - patch
       - rule_3.3.4
 
-- name: "SCORED | 3.4.2.1 | PATCH | Ensure firewalld service is enabled and running"
+- name: "SCORED | 3.4.1.1 | PATCH | Ensure a Firewall package is installed"
   yum:
       name: firewalld
       state: present
   when: rhel8cis_firewall == "firewalld"
-  notify: restart firewalld
   tags:
       - level1
       - patch
-      - rule_3.4.2.1
+      - rule_3.4.1.1
 
 - name: "SCORED | 3.4.2.1 | PATCH | Ensure firewalld service is enabled and running"
   service:
