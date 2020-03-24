@@ -346,16 +346,16 @@
       - patch
       - rule_3.4.2.6
 
-- name: "SCORED | 3.4.3.1 | PATCH | Ensure iptables are flushed"
-  shell: |
-    -  iptables -F
-    -  ip6tables -F
-  when:
-      - rhel8cis_rule_3_4_3_1|bool
-  tags:
-      - level1
-      - patch
-      - rule_3.4.3.1
+#- name: "SCORED | 3.4.3.1 | PATCH | Ensure iptables are flushed"
+#  shell: |
+#    -  iptables -F
+#    -  ip6tables -F
+#  when:
+#      - rhel8cis_rule_3_4_3_1|bool
+#  tags:
+#      - level1
+#      - patch
+#      - rule_3.4.3.1
 
 - name: "SCORED | 3.4.3.2 | PATCH | Ensure a table exists"
   command: nft create table inet filter
