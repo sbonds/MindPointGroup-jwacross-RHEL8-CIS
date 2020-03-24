@@ -294,6 +294,7 @@
       name: iptables
       state: stopped
       enabled: no
+  ignore_errors: yes
   when:
       - rhel8cis_firewall == "firewalld"
       - rhel8cis_rule_3_4_2_2|bool
