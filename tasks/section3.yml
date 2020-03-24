@@ -290,29 +290,30 @@
       - rule_3.4.2.1
 
 - name: "SCORED | 3.4.2.2 | PATCH | Ensure iptables is not enabled"
-  yum:
-      name: systemctl --now mask iptables
-      state: present
+  service:
+      name: iptables
+      state: stopped
+      enabled: no
   when:
-      - rhel8cis_firewall == "iptables"
+      - rhel8cis_firewall == "firewalld"
       - rhel8cis_rule_3_4_2_2|bool
   tags:
       - level1
       - patch
       - rule_3.4.2.2
 
-- name: "SCORED | 3.4.2.2 | PATCH | Ensure iptables is not enabled"
+- name: "SCORED | 3.4.2.3 | PATCH | Ensure nftables is not enabled"
   service:
-      name: iptables
+      name: nftables
       state: stopped
       enabled: no
   when:
-      - rhel8cis_firewall == "iptables"
-      - rhel8cis_rule_3_4_2_2|bool
+      - rhel8cis_firewall == "firewalld"
+      - rhel8cis_rule_3_4_2_3|bool
   tags:
       - level1
       - patch
-      - rule_3.4.2.2
+      - rule_3.4.2.3
 
 - name: "SCORED | 3.4.3.6 | PATCH | Ensure default deny firewall policy"
   lineinfile:
