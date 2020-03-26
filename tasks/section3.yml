@@ -357,66 +357,66 @@
 #      - patch
 #      - rule_3.4.3.1
 
-- name: "SCORED | 3.4.3.2 | PATCH | Ensure a table exists"
-  command: nft create table inet filter
-  when:
-      - rhel8cis_rule_3_4_3_2|bool
-  tags:
-      - level1
-      - patch
-      - rule_3.4.3.2
+#- name: "SCORED | 3.4.3.2 | PATCH | Ensure a table exists"
+#  command: nft create table inet filter
+#  when:
+#      - rhel8cis_rule_3_4_3_2|bool
+#  tags:
+#      - level1
+#      - patch
+#      - rule_3.4.3.2
 
-- name: "SCORED | 3.4.3.3 | PATCH | Ensure base chains exist"
-  shell: | 
-    -  nft create chain inet filter input { type filter hook input priority 0 \; }
-    -  nft create chain inet filter forward { type filter hook forward priority 0 \; }
-    -  nft create chain inet filter output { type filter hook output priority 0 \; }
-  when:
-      - rhel8cis_rule_3_4_3_3|bool
-  tags:
-      - level1
-      - patch
-      - rule_3.4.3.3
+#- name: "SCORED | 3.4.3.3 | PATCH | Ensure base chains exist"
+#  shell: | 
+#    -  nft create chain inet filter input { type filter hook input priority 0 \; }
+#    -  nft create chain inet filter forward { type filter hook forward priority 0 \; }
+#    -  nft create chain inet filter output { type filter hook output priority 0 \; }
+#  when:
+#      - rhel8cis_rule_3_4_3_3|bool
+#  tags:
+#      - level1
+#      - patch
+#      - rule_3.4.3.3
 
-- name: "SCORED | 3.4.3.4 | PATCH | Ensure loopback traffic is configured"
-  shell: |
-    -  nft add rule inet filter input iif lo accept
-    -  nft create rule inet filter input ip saddr 127.0.0.0/8 counter drop
-    -  nft add rule inet filter input ip6 saddr ::1 counter drop
-  when:
-      - rhel8cis_rule_3_4_3_4|bool
-  tags:
-      - level1
-      - patch
-      - rule_3.4.3.4
+#- name: "SCORED | 3.4.3.4 | PATCH | Ensure loopback traffic is configured"
+#  shell: |
+#    -  nft add rule inet filter input iif lo accept
+#    -  nft create rule inet filter input ip saddr 127.0.0.0/8 counter drop
+#    -  nft add rule inet filter input ip6 saddr ::1 counter drop
+#  when:
+#      - rhel8cis_rule_3_4_3_4|bool
+#  tags:
+#      - level1
+#      - patch
+#      - rule_3.4.3.4
 
-- name: "SCORED | 3.4.3.5 | PATCH | Ensure outbound and established connections are configured"
-  shell: |
-    - nft add rule inet filter input ip protocol tcp ct state established accept
-    - nft add rule inet filter input ip protocol udp ct state established accept
-    - nft add rule inet filter input ip protocol icmp ct state established accept
-    - nft add rule inet filter output ip protocol tcp ct state new,related,established accept
-    - nft add rule inet filter output ip protocol udp ct state new,related,established accept
-    - nft add rule inet filter output ip protocol icmp ct state new,related,established accept
-  when:
-      - rhel8cis_rule_3_4_3_5|bool
-  tags:
-      - level1
-      - patch
-      - rule_3.4.3.5
+#- name: "SCORED | 3.4.3.5 | PATCH | Ensure outbound and established connections are configured"
+#  shell: |
+#    - nft add rule inet filter input ip protocol tcp ct state established accept
+#    - nft add rule inet filter input ip protocol udp ct state established accept
+#    - nft add rule inet filter input ip protocol icmp ct state established accept
+#    - nft add rule inet filter output ip protocol tcp ct state new,related,established accept
+#    - nft add rule inet filter output ip protocol udp ct state new,related,established accept
+#    - nft add rule inet filter output ip protocol icmp ct state new,related,established accept
+#  when:
+#      - rhel8cis_rule_3_4_3_5|bool
+#  tags:
+#      - level1
+#      - patch
+#      - rule_3.4.3.5
 
-- name: "SCORED | 3.4.4.1.1 | PATCH | Ensure default deny firewall policy"
-  shell: |
-    -  iptables -P INPUT DROP
-    -  iptables -P OUTPUT DROP
-    -  iptables -P FORWARD DROP
-  when:
-      - rhel8cis_firewall == "iptables"
-      - rhel8cis_rule_3_4_4_1_1|bool
-  tags:
-      - level1
-      - patch
-      - rule_3.4.4.1.1
+#- name: "SCORED | 3.4.4.1.1 | PATCH | Ensure default deny firewall policy"
+#  shell: |
+#    -  iptables -P INPUT DROP
+#    -  iptables -P OUTPUT DROP
+#    -  iptables -P FORWARD DROP
+#  when:
+#      - rhel8cis_firewall == "iptables"
+#      - rhel8cis_rule_3_4_4_1_1|bool
+#  tags:
+#      - level1
+#      - patch
+#      - rule_3.4.4.1.1
 
 - name: "SCORED | 3.4.3.4 | PATCH | Ensure loopback traffic is configured"
   command: /bin/true
