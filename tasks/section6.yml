@@ -421,6 +421,7 @@
 
 - name: "SCORED | 6.2.19 | PATCH | Ensure shadow group is empty"
   command: groupmems -p -g shadow
+  ignore_errors: yes
   when:
       - rhel8cis_rule_6_2_19|bool
   tags:
