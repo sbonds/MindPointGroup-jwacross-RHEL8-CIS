@@ -583,15 +583,15 @@
       - rule_5.5.4
 
 - name: "SCORED | 5.5.3 | PATCH | Ensure system accounts are secured"
-    lineinfile:
+  lineinfile:
       state: present
       dest: "{{ item }}"
       regexp: '^readonly'
       line: 'readonly TMOUT=900 ; export TMOUT'
-    with_items:
-        - { dest: /etc/bashrc }
-        - { dest: /etc/profile }
-        - { dest: /etc/profile.d/*.sh }
+  with_items:
+      - { dest: /etc/bashrc }
+      - { dest: /etc/profile }
+      - { dest: /etc/profile.d/*.sh }
   when:
       - rhel8cis_rule_5_5_3|bool
   tags:
