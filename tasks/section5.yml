@@ -582,7 +582,7 @@
       - patch
       - rule_5.5.4
 
-- name: "SCORED | 5.5.3 | PATCH | Ensure system accounts are secured"
+- name: "SCORED | 5.5.3 | PATCH | Ensure default user shell timeout is 900 seconds or less"
   lineinfile:
       state: present
       dest: "{{ item }}"
