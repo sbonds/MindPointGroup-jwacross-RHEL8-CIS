@@ -513,6 +513,18 @@
       - rule_5.5.1.4
       - notimplemented
 
+- name: "SCORED | 5.5.1.5 | PATCH | Ensure all users last password change date is in the past"
+  command: /bin/true
+  changed_when: no
+  when:
+      - rhel8cis_rule_5_5_1_5|bool
+  tags:
+      - level1
+      - level2
+      - patch
+      - rule_5.5.1.5
+      - notimplemented
+
 - name: "SCORED | 5.5.2 | PATCH | Ensure system accounts are secured"
   shell: "awk -F: '($3 < {{ rhel8cis_rule_5_4_2_min_uid }}) {print $1 }' /etc/passwd"
   changed_when: no
@@ -569,6 +581,23 @@
       - level2
       - patch
       - rule_5.5.4
+
+- name: "SCORED | 5.5.3 | PATCH | Ensure system accounts are secured"
+    lineinfile:
+      state: present
+      dest: "{{ item }}"
+      regexp: '^readonly'
+      line: 'readonly TMOUT=900 ; export TMOUT'
+    with_items:
+        - { dest: /etc/bashrc }
+        - { dest: /etc/profile }
+        - { dest: /etc/profile.d/*.sh }
+  when:
+      - rhel8cis_rule_5_5_3|bool
+  tags:
+      - level1
+      - patch
+      - rule_5.5.3
 
 - name: "SCORED | 5.5.5 | PATCH | Ensure default user umask is 027 or more restrictive"
   block:
