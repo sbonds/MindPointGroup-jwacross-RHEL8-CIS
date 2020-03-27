@@ -391,7 +391,8 @@
   shell: |
     - find /etc/ssh -xdev -type f -name 'ssh_host_*_key.pub' -exec chmod 0644 {} \;
     - find /etc/ssh -xdev -type f -name 'ssh_host_*_key.pub' -exec chown root:root {} \;
-  when:
+  ignore_errors: yes
+    when:
       - rhel8cis_rule_5_2_4|bool
   tags:
       - level1
