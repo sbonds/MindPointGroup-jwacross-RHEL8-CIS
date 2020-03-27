@@ -379,6 +379,7 @@
   shell: |
     - find /etc/ssh -xdev -type f -name 'ssh_host_*_key' -exec chown root:root {} \;
     - find /etc/ssh -xdev -type f -name 'ssh_host_*_key' -exec chmod 0600 {} \;
+  ignore_errors: yes
   when:
       - rhel8cis_rule_5_2_3|bool
   tags:
