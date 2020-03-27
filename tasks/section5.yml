@@ -411,6 +411,19 @@
       - patch
       - rule_5.2.15
 
+- name: "SCORED | 5.2.16 | PATCH | Ensure SSH PAM is enabled"
+  lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^UsePAM'
+      line: 'UsePAM yes'
+  when:
+      - rhel8cis_rule_5_2_16|bool
+  tags:
+      - level1
+      - patch
+      - rule_5.2.16
+
 - name: "SCORED | 5.2.17 | PATCH | Ensure SSH AllowTcpForwarding is disabled"
   lineinfile:
       state: present
@@ -424,6 +437,32 @@
       - level2
       - patch
       - rule_5.2.17
+
+- name: "SCORED | 5.2.18 | PATCH | Ensure SSH MaxStartups is configured"
+  lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^maxstartups'
+      line: 'maxstartups 10:30:60'
+  when:
+      - rhel8cis_rule_5_2_18|bool
+  tags:
+      - level1
+      - patch
+      - rule_5.2.18
+
+- name: "SCORED | 5.2.19 | PATCH | Ensure SSH MaxSessions is set to 4 or less"
+  lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^MaxSessions'
+      line: 'MaxSessions 4'
+  when:
+      - rhel8cis_rule_5_2_19|bool
+  tags:
+      - level1
+      - patch
+      - rule_5.2.19
 
 - name: "SCORED | 5.4.1 | PATCH | Ensure password creation requirements are configured"
   lineinfile:
