@@ -317,7 +317,7 @@
       - rule_3.4.2.3
 
 - name: "SCORED | 3.4.2.4 | PATCH | Ensure default zone is set"
-  command: /bin/true
+  command: firewall-cmd --set-default-zone=trusted
   changed_when: no
   when:
       - rhel8cis_rule_3_4_2_4|bool
@@ -327,7 +327,7 @@
       - rule_3.4.2.4
 
 - name: "SCORED | 3.4.2.5 | PATCH | Ensure network interfaces are assigned to appropriate zone"
-  command: /bin/true
+  command: firewall-cmd --zone=trusted --change-interface=eth0
   changed_when: no
   when:
       - rhel8cis_rule_3_4_2_5|bool
@@ -336,15 +336,16 @@
       - patch
       - rule_3.4.2.5
 
-- name: "SCORED | 3.4.2.6 | PATCH | Ensure unnecessary services and ports are not accepted"
-  command: /bin/true
-  changed_when: no
-  when:
-      - rhel8cis_rule_3_4_2_6|bool
-  tags:
-      - level1
-      - patch
-      - rule_3.4.2.6
+#- name: "SCORED | 3.4.2.6 | PATCH | Ensure unnecessary services and ports are not accepted"
+#  shell: |
+#    - firewall-cmd --remove-service=cockpit
+#    - firewall-cmd --remove-port=25/tcp
+#  when:
+#      - rhel8cis_rule_3_4_2_6|bool
+#  tags:
+#      - level1
+#      - patch
+#      - rule_3.4.2.6
 
 #- name: "SCORED | 3.4.3.1 | PATCH | Ensure iptables are flushed"
 #  shell: |
@@ -497,17 +498,19 @@
       - patch
       - rule_3.4.4.1.4
 
-- name: "SCORED | 3.4.4.1.4 | PATCH | Ensure firewall rules exist for all open ports"
-  command: /bin/true
-  changed_when: no
-  when:
-      - rhel8cis_firewall == "iptables"
-      - rhel8cis_rule_3_4_4_1_4|bool
-  tags:
-      - level1
-      - patch
-      - rule_3.4.4.1.4
-      - notimplemented
+#- name: "SCORED | 3.4.4.1.4 | PATCH | Ensure firewall rules exist for all open ports"
+#  shell: |
+#    - ss -4tuln
+#    - iptables -L INPUT -v -n
+#  changed_when: no
+#  when:
+#      - rhel8cis_firewall == "iptables"
+#      - rhel8cis_rule_3_4_4_1_4|bool
+#  tags:
+#      - level1
+#      - patch
+#      - rule_3.4.4.1.4
+#      - notimplemented
 
 - name: "NOTSCORED | 3.5 | PATCH | Ensure wireless interfaces are disabled"
   command: nmcli radio all off
