@@ -415,8 +415,8 @@
 
 - name: "NOTSCORED | 4.2.1.4 | PATCH | Ensure logging is configured"
   lineinfile:
-      dest: /etc/{{ item.key }}
-      line: {{ item.value }}
+      dest: /etc/'{{ item.key }}'
+      line: '{{ item.value }}'
       state: present
       insertafter: yes
   with_items:
