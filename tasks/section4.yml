@@ -415,30 +415,30 @@
 
 - name: "NOTSCORED | 4.2.1.4 | PATCH | Ensure logging is configured"
   lineinfile:
-      dest: /etc/{{ file }}
-      line: {{ item }}
+      dest: /etc/{{ item.key }}
+      line: {{ item.value }}
       state: present
       insertafter: yes
-  with_files:
-    - rsyslog.conf
-    - rsyslog.d/*.conf
   with_items:
-    - *.emerg :omusrmsg:*
-    - auth,authpriv.* /var/log/secure
-    - mail.* -/var/log/mail
-    - mail.info -/var/log/mail.info
-    - mail.warning -/var/log/mail.warn
-    - mail.err /var/log/mail.err
-    - news.crit -/var/log/news/news.crit
-    - news.err -/var/log/news/news.err
-    - news.notice -/var/log/news/news.notice
-    - *.=warning;*.=err -/var/log/warn
-    - *.crit /var/log/warn
-    - *.*;mail.none;news.none -/var/log/messages
-    - local0,local1.* -/var/log/localmessages
-    - local2,local3.* -/var/log/localmessages
-    - local4,local5.* -/var/log/localmessages
-    - local6,local7.* -/var/log/localmessages
+    - { key: 'rsyslog.conf' }
+    - { key: 'rsyslog.d/*.conf' }
+  with_items:
+    - {item: '*.emerg :omusrmsg:*' }
+    - {item: 'auth,authpriv.* /var/log/secure' }
+    - {item: 'mail.* -/var/log/mail' }
+    - {item: 'mail.info -/var/log/mail.info' }
+    - {item: 'mail.warning -/var/log/mail.warn' }
+    - {item: 'mail.err /var/log/mail.err' }
+    - {item: 'news.crit -/var/log/news/news.crit' }
+    - {item: 'news.err -/var/log/news/news.err' }
+    - {item: 'news.notice -/var/log/news/news.notice' }
+    - {item: '*.=warning;*.=err -/var/log/warn' }
+    - {item: '*.crit /var/log/warn' }
+    - {item: '*.*;mail.none;news.none -/var/log/messages' }
+    - {item: 'local0,local1.* -/var/log/localmessages' }
+    - {item: 'local2,local3.* -/var/log/localmessages' }
+    - {item: 'local4,local5.* -/var/log/localmessages' }
+    - {item: 'local6,local7.* -/var/log/localmessages' }
   when:
       - rhel8cis_rule_4_2_1_4|bool
   tags:
