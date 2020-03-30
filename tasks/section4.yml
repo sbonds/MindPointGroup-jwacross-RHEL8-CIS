@@ -451,6 +451,7 @@
       line: '{{ item.value }}'
       state: present
       insertafter: yes
+  ignore_errors: yes
   with_items:
     - { value: '*.emerg :omusrmsg:*' }
     - { value: 'auth,authpriv.* /var/log/secure' }
@@ -494,6 +495,7 @@
       line: '{{ item.value }}'
       state: present
       insertafter: yes
+  ignore_errors: yes
   with_items:
     - { value: '*.* @@loghost.example.com' }
   when:
@@ -533,17 +535,35 @@
       - rule_4.2.1.5
       - notimplemented
 
-- name: "NOTSCORED | 4.2.1.6 | PATCH | Ensure remote rsyslog messages are only accepted on designated log hosts."
-  command: /bin/true
-  changed_when: no
-  when:
-      - rhel8cis_rule_4_2_1_6|bool
-  tags:
-      - level1
-      - level2
-      - patch
-      - rule_4.2.1.6
-      - notimplemented
+#- name: "NOTSCORED | 4.2.1.6 | PATCH | Ensure remote rsyslog messages are only accepted on designated log hosts."
+#  lineinfile:
+#      dest: /etc/rsyslog.conf
+#      regexp: '^\$ModLoad'
+#      line: 'ModLoad imtcp'
+#      state: present
+#  when:
+#      - rhel8cis_rule_4_2_1_6|bool
+#  tags:
+#      - level1
+#      - level2
+#      - patch
+#      - rule_4.2.1.6
+#      - notimplemented
+
+#- name: "NOTSCORED | 4.2.1.6 | PATCH | Ensure remote rsyslog messages are only accepted on designated log hosts."
+#  lineinfile:
+#      dest: /etc/rsyslog.conf
+#      regexp: '^\$InputTCPServerRun'
+#      line: 'InputTCPServerRun 514'
+#      state: present
+#  when:
+#      - rhel8cis_rule_4_2_1_6|bool
+#  tags:
+#      - level1
+#      - level2
+#      - patch
+#      - rule_4.2.1.6
+#      - notimplemented
 
 - name: "NOTSCORED | 4.2.1.6 | PATCH | Ensure remote rsyslog messages are only accepted on designated log hosts."
   command: systemctl restart rsyslog
