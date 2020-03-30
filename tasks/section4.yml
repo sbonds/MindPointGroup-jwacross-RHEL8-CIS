@@ -448,30 +448,6 @@
       - rule_4.2.1.6
       - notimplemented
 
-- name: "NOTSCORED | 4.2.1.6 | PATCH | Ensure remote rsyslog messages are only accepted on designated log hosts."
-  command: /bin/true
-  changed_when: no
-  when:
-      - rhel8cis_rule_4_2_1_6|bool
-  tags:
-      - level1
-      - level2
-      - patch
-      - rule_4.2.1.6
-      - notimplemented
-
-- name: "NOTSCORED | 4.2.1.4 | PATCH | Ensure logging is configured"
-  command: /bin/true
-  changed_when: no
-  when:
-      - rhel8cis_rule_4_2_1_4|bool
-  tags:
-      - level1
-      - level2
-      - patch
-      - rule_4.2.1.4
-      - notimplemented
-
 - name: "SCORED | 4.2.2.1 | PATCH | Ensure journald is configured to send logs to rsyslog"
   lineinfile:
       dest: /etc/systemd/journald.conf

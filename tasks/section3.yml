@@ -510,8 +510,7 @@
       - notimplemented
 
 - name: "NOTSCORED | 3.5 | PATCH | Ensure wireless interfaces are disabled"
-  command: /bin/true
-  changed_when: no
+  command: nmcli radio all off
   tags:
       - level1
       - level2
