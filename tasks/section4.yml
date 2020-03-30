@@ -422,7 +422,6 @@
   with_items:
     - { key: 'rsyslog.conf' }
     - { key: 'rsyslog.d/*.conf' }
-  with_items:
     - { value: '*.emerg :omusrmsg:*' }
     - { value: 'auth,authpriv.* /var/log/secure' }
     - { value: 'mail.* -/var/log/mail' }
