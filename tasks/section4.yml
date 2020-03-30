@@ -415,13 +415,11 @@
 
 - name: "NOTSCORED | 4.2.1.4 | PATCH | Ensure logging is configured"
   lineinfile:
-      dest: /etc/'{{ item.key }}'
+      dest: /etc/rsyslog.conf
       line: '{{ item.value }}'
       state: present
       insertafter: yes
   with_items:
-    - { key: 'rsyslog.conf' }
-    - { key: 'rsyslog.d/*.conf' }
     - { value: '*.emerg :omusrmsg:*' }
     - { value: 'auth,authpriv.* /var/log/secure' }
     - { value: 'mail.* -/var/log/mail' }
