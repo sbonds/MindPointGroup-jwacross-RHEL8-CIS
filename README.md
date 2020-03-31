@@ -14,7 +14,7 @@ If you want to install this via the `ansible-galaxy` command you'll need to run 
 With this in the file requirements.yml:
 
 ```
-- src: https://github.com/KelfeinX/RHEL8-CIS.git
+- src: https://github.com/jwacross/RHEL8-CIS.git
 ```
 
 Based on [CIS RedHat Enterprise Linux 8 Benchmark v1.0.0 - 02-28-2020 ](https://www.cisecurity.org/benchmark/red_hat_linux/).

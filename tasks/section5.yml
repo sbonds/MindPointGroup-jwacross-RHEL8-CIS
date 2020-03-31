@@ -375,6 +375,30 @@
       - patch
       - rule_5.2.12
 
+- name: "SCORED | 5.2.3 | PATCH | Ensure permissions on SSH private host key files are configured"
+  shell: |
+    - find /etc/ssh -xdev -type f -name 'ssh_host_*_key' -exec chown root:root {} \;
+    - find /etc/ssh -xdev -type f -name 'ssh_host_*_key' -exec chmod 0600 {} \;
+  ignore_errors: yes
+  when:
+      - rhel8cis_rule_5_2_3|bool
+  tags:
+      - level1
+      - patch
+      - rule_5.2.3
+
+- name: "SCORED | 5.2.4 | PATCH | Ensure permissions on SSH public host key files are configured"
+  shell: |
+    - find /etc/ssh -xdev -type f -name 'ssh_host_*_key.pub' -exec chmod 0644 {} \;
+    - find /etc/ssh -xdev -type f -name 'ssh_host_*_key.pub' -exec chown root:root {} \;
+  ignore_errors: yes
+  when:
+      - rhel8cis_rule_5_2_4|bool
+  tags:
+      - level1
+      - patch
+      - rule_5.2.4
+
 - name: "SCORED | 5.2.15 | PATCH | Ensure SSH warning banner is configured"
   lineinfile:
       state: present
@@ -388,6 +412,87 @@
       - level2
       - patch
       - rule_5.2.15
+
+- name: "SCORED | 5.2.16 | PATCH | Ensure SSH PAM is enabled"
+  lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^UsePAM'
+      line: 'UsePAM yes'
+  when:
+      - rhel8cis_rule_5_2_16|bool
+  tags:
+      - level1
+      - patch
+      - rule_5.2.16
+
+- name: "SCORED | 5.2.17 | PATCH | Ensure SSH AllowTcpForwarding is disabled"
+  lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^AllowTcpForwarding'
+      line: 'AllowTcpForwarding no'
+  when:
+      - rhel8cis_rule_5_2_17|bool
+  tags:
+      - level1
+      - level2
+      - patch
+      - rule_5.2.17
+
+- name: "SCORED | 5.2.18 | PATCH | Ensure SSH MaxStartups is configured"
+  lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^maxstartups'
+      line: 'maxstartups 10:30:60'
+  when:
+      - rhel8cis_rule_5_2_18|bool
+  tags:
+      - level1
+      - patch
+      - rule_5.2.18
+
+- name: "SCORED | 5.2.19 | PATCH | Ensure SSH MaxSessions is set to 4 or less"
+  lineinfile:
+      state: present
+      dest: /etc/ssh/sshd_config
+      regexp: '^MaxSessions'
+      line: 'MaxSessions 4'
+  when:
+      - rhel8cis_rule_5_2_19|bool
+  tags:
+      - level1
+      - patch
+      - rule_5.2.19
+
+- name: "SCORED | 5.3.1 | PATCH | Create custom authselect profile"
+  command: authselect create-profile custom-profile -b sssd --symlink-meta
+  ignore_errors: yes
+  when:
+      - rhel8cis_rule_5_3_1|bool
+  tags:
+      - level1
+      - patch
+      - rule_5.3.1
+
+#- name: "SCORED | 5.3.2 | PATCH | Select authselect profile"
+#  command: authselect select custom/custom-profile with-sudo with-faillock without-nullok
+#  when:
+#      - rhel8cis_rule_5_3_2|bool
+#  tags:
+#      - level1
+#      - patch
+#      - rule_5.3.2
+
+- name: "SCORED | 5.3.3 | PATCH | Ensure authselect includes with-faillock"
+  command: authselect select custom/custom-profile with-sudo with-faillock without-nullok --force
+  when:
+      - rhel8cis_rule_5_3_3|bool
+  tags:
+      - level1
+      - patch
+      - rule_5.3.3
 
 - name: "SCORED | 5.4.1 | PATCH | Ensure password creation requirements are configured"
   lineinfile:
@@ -499,6 +604,18 @@
       - rule_5.5.1.4
       - notimplemented
 
+- name: "SCORED | 5.5.1.5 | PATCH | Ensure all users last password change date is in the past"
+  command: /bin/true
+  changed_when: no
+  when:
+      - rhel8cis_rule_5_5_1_5|bool
+  tags:
+      - level1
+      - level2
+      - patch
+      - rule_5.5.1.5
+      - notimplemented
+
 - name: "SCORED | 5.5.2 | PATCH | Ensure system accounts are secured"
   shell: "awk -F: '($3 < {{ rhel8cis_rule_5_4_2_min_uid }}) {print $1 }' /etc/passwd"
   changed_when: no
@@ -555,6 +672,24 @@
       - level2
       - patch
       - rule_5.5.4
+
+- name: "SCORED | 5.5.3 | PATCH | Ensure default user shell timeout is 900 seconds or less"
+  lineinfile:
+      state: present
+      dest: /etc/{{ item }}
+      regexp: '^readonly'
+      line: 'readonly TMOUT=900 ; export TMOUT'
+  ignore_errors: yes
+  with_items:
+      - bashrc
+      - profile
+      - profile.d/*.sh
+  when:
+      - rhel8cis_rule_5_5_3|bool
+  tags:
+      - level1
+      - patch
+      - rule_5.5.3
 
 - name: "SCORED | 5.5.5 | PATCH | Ensure default user umask is 027 or more restrictive"
   block:

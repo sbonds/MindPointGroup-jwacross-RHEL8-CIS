@@ -12,8 +12,9 @@
       - skip_ansible_lint
 
 - name: "SCORED | 1.1 | PATCH | Ensure system-wide crypto policy is not legacy"
-  command: update-crypto-policies --set DEFAULT
-  command: update-crypto-policies
+  shell: |
+    update-crypto-policies --set DEFAULT
+    update-crypto-policies
   when:
       - rhel8cis_rule_1_1|bool
   tags:
@@ -927,8 +928,9 @@
       - rule_1.8.2
 
 - name: "SCORED | 1.11 | PATCH | Ensure system-wide crypto policy is FUTURE or FIPS"
-  command: update-crypto-policies --set FUTURE
-  command: update-crypto-policies
+  shell: |
+    update-crypto-policies --set FUTURE
+    update-crypto-policies
   when:
       - rhel8cis_rule_1_11|bool
   tags:
