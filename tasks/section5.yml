@@ -604,7 +604,8 @@
       - rule_5.5.1.4
 
 - name: "SCORED | 5.5.1.5 | PATCH | Ensure all users last password change date is in the past"
-  command: for usr in $(cut -d: -f1 /etc/shadow); do [[ $(chage --list $usr | grep '^Last password change' | cut -d: -f2) > $(date) ]] & done > ~/password_audit.log
+  command: /bin/true
+  changed_when: no
   when:
       - rhel8cis_rule_5_5_1_5|bool
   tags:
@@ -709,8 +710,8 @@
       - rule_5.5.5
 
 - name: "NOTSCORED | 5.6 | PATCH | Ensure root login is restricted to system console"
-  command: cat /etc/securetty > ~/securetty.log
-  ignore_errors: yes
+  command: /bin/true
+  changed_when: no
   tags:
       - level1
       - level2
