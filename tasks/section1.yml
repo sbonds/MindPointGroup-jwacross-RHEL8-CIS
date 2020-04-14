@@ -1,5 +1,5 @@
 - name: "SCORED | 1.9 | PATCH | Ensure updates, patches, and additional security software are installed"
-  yum:
+  package:
       name: "*"
       state: latest
   when:
@@ -540,7 +540,7 @@
       - rule_1.3.3
 
 - name: "SCORED | 1.4.1 | PATCH | Ensure AIDE is installed"
-  yum:
+  package:
       name: aide
       state: present
   when:
@@ -785,7 +785,7 @@
       - rule_1.7.1.5
 
 - name: "SCORED | 1.7.1.6 | PATCH | Ensure SETroubleshoot is not installed"
-  yum:
+  package:
       name: setroubleshoot
       state: absent
   when:
@@ -798,7 +798,7 @@
       - rule_1.7.1.6
 
 - name: "SCORED | 1.7.1.7 | PATCH | Ensure the MCS Translation Service (mcstrans) is not installed"
-  yum:
+  package:
       name: mcstrans
       state: absent
   when:
@@ -810,7 +810,7 @@
       - rule_1.7.1.7
 
 - name: "SCORED | 1.7.1.1 | PATCH | Ensure SELinux is installed"
-  yum:
+  package:
       name: libselinux
       state: present
   when:

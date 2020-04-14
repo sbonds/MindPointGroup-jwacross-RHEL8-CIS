@@ -269,7 +269,7 @@
       - rule_3.3.4
 
 - name: "SCORED | 3.4.1.1 | PATCH | Ensure a Firewall package is installed"
-  yum:
+  package:
       name: firewalld
       state: present
   when: rhel8cis_firewall == "firewalld"

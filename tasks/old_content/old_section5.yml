@@ -11,7 +11,7 @@
       - rule_5.1.1
 
 - name: "SCORED | 5.1.1 | PATCH | Install the rsyslog package"
-  yum:
+  package:
       name: rsyslog
       state: installed
   tags:

@@ -515,7 +515,7 @@
       - rule_4.5.1
 
 - name: "NOTSCORED | 4.5.1 | PATCH | Install TCP Wrappers"
-  yum:
+  package:
       name=tcp_wrappers
       state=installed
   tags:

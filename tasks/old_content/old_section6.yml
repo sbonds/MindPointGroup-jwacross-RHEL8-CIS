@@ -11,7 +11,7 @@
       - rule_6.1.1
 
 - name: "SCORED | 6.1.1 | PATCH | Enable anacron Daemon"
-  yum:
+  package:
       name=cronie-anacron
       state=installed
   tags:

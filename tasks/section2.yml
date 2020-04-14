@@ -1,5 +1,5 @@
 - name: "SCORED | 2.1.1 | PATCH | Ensure xinetd is not installed"
-  yum:
+  package:
       name: xinetd
       state: absent
   when:
@@ -12,7 +12,7 @@
       - rule_2.1.1
 
 - name: "NOTSCORED | 2.2.1.1 | PATCH | Ensure time synchronization is in use - service install"
-  yum:
+  package:
       name: "{{ rhel8cis_time_synchronization }}"
       state: present
   when:
@@ -92,7 +92,7 @@
       - rule_2.2.1.2
 
 - name: "SCORED | 2.2.2 | PATCH | Ensure X Window System is not installed"
-  yum:
+  package:
       state: absent
       name:
           - "xorg-x11*"
@@ -337,7 +337,7 @@
       - rule_2.2.17
 
 - name: "SCORED | 2.3.2 | PATCH | Ensure telnet client is not installed"
-  yum:
+  package:
       name: telnet
       state: absent
   when:
@@ -363,7 +363,7 @@
       - rule_2.2.3
 
 - name: "SCORED | 2.3.1 | PATCH | Ensure NIS Client is not installed"
-  yum:
+  package:
       name: ypbind
       state: absent
   when:
@@ -375,7 +375,7 @@
       - rule_2.3.1
 
 - name: "SCORED | 2.3.3 | PATCH | Ensure LDAP client is not installed"
-  yum:
+  package:
       name: openldap-clients
       state: absent
   when:

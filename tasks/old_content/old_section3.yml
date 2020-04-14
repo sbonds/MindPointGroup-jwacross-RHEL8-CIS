@@ -35,7 +35,7 @@
       - rule_3.2
 
 - name: "SCORED | 3.2 | PATCH | Remove the X Window System"
-  yum:
+  package:
       name=xorg-x11-server-common
       state=absent
   tags:
@@ -57,7 +57,7 @@
       - rule_3.3
 
 - name: "SCORED | 3.3 | PATCH | Disable Avahi Server"
-  yum:
+  package:
       name=avahi
       state=absent
   tags:
@@ -79,7 +79,7 @@
       - rule_3.4
 
 - name: "NOTSCORED | 3.4 | PATCH | Disable Print Server - CUPS"
-  yum:
+  package:
       name=cups
       state=absent
   tags:
@@ -101,7 +101,7 @@
       - rule_3.5
 
 - name: "SCORED | 3.5 | PATCH | Remove DHCP Server"
-  yum:
+  package:
       name=dhcp
       state=absent
   when:
@@ -185,7 +185,7 @@
       - rule_3.7
 
 - name: "NOTSCORED | 3.7 | PATCH | Remove LDAP"
-  yum:
+  package:
       name=openldap-servers
       state=absent
   when:
@@ -253,7 +253,7 @@
       - rule_3.9
 
 - name: "NOTSCORED | 3.9 | PATCH | Remove DNS Server"
-  yum:
+  package:
       name=bind
       state=absent
   when:
@@ -277,7 +277,7 @@
       - rule_3.10
 
 - name: "NOTSCORED | 3.10 | PATCH | Remove FTP Server"
-  yum:
+  package:
       name=vsftpd
       state=absent
   when:
@@ -301,7 +301,7 @@
       - rule_3.11
 
 - name: "NOTSCORED | 3.11 | PATCH | Remove HTTP Server"
-  yum:
+  package:
       name=httpd
       state=absent
   when:
@@ -325,7 +325,7 @@
       - rule_3.12
 
 - name: "NOTSCORED | 3.12 | PATCH | Remove Dovecot (IMAP and POP3 services)"
-  yum:
+  package:
       name=dovecot
       state=absent
   when:
@@ -349,7 +349,7 @@
       - rule_3.13
 
 - name: "NOTSCORED | 3.13 | PATCH | Remove Samba"
-  yum:
+  package:
       name=samba
       state=absent
   when:
@@ -373,7 +373,7 @@
       - rule_3.14
 
 - name: "NOTSCORED | 3.14 | PATCH | Remove HTTP Proxy Server"
-  yum:
+  package:
       name=squid
       state=absent
   when:
@@ -397,7 +397,7 @@
       - rule_3.15
 
 - name: "NOTSCORED | 3.15 | PATCH | Remove SNMP Server"
-  yum:
+  package:
       name=net-snmp
       state=absent
   when:
