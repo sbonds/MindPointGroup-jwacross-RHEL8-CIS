@@ -95,7 +95,8 @@
   package:
       state: absent
       name:
-          - "xorg-x11-server-*"
+          - "xorg-x11-*"
+  ignore_errors: yes
   when:
       - not rhel8cis_xwindows_required
       - rhel8cis_rule_2_2_2|bool
