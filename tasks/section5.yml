@@ -678,7 +678,6 @@
       line: 'readonly TMOUT=900 ; export TMOUT'
   ignore_errors: yes
   with_items:
-      - bashrc
       - profile
       - profile.d/*.sh
   when:
