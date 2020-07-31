@@ -321,6 +321,7 @@
   changed_when: no
   when:
       - rhel8cis_rule_3_4_2_4|bool
+      - rhel8cis_firewall == "firewalld"
   tags:
       - level1
       - patch
@@ -331,6 +332,7 @@
   changed_when: no
   when:
       - rhel8cis_rule_3_4_2_5|bool
+      - rhel8cis_firewall == "firewalld"
   tags:
       - level1
       - patch
@@ -342,6 +344,7 @@
 #    - firewall-cmd --remove-port=25/tcp
 #  when:
 #      - rhel8cis_rule_3_4_2_6|bool
+#      - rhel8cis_firewall == "firewalld"
 #  tags:
 #      - level1
 #      - patch
