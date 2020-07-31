@@ -281,7 +281,7 @@
 - name: "SCORED | 3.4.2.1 | PATCH | Ensure firewalld service is enabled and running"
   service:
       name: firewalld
-      state: started
+      state: restarted
       enabled: yes
   when: rhel8cis_firewall == "firewalld"
   tags:
