@@ -5,21 +5,9 @@ Configure RHEL/Centos 8 machine to be [CIS](https://www.cisecurity.org/cis-bench
 
 This role **will make changes to the system** that could break things. This is not an auditing tool but rather a remediation tool to be used after an audit has been conducted.
 
-## IMPORTANT INSTALL STEP
-
-If you want to install this via the `ansible-galaxy` command you'll need to run it like this:
-
-`ansible-galaxy install -p roles -r requirements.yml`
-
-With this in the file requirements.yml:
-
-```
-- src: https://github.com/jwacross/RHEL8-CIS.git
-```
-
 Based on [CIS RedHat Enterprise Linux 8 Benchmark v1.0.0 - 02-28-2020 ](https://www.cisecurity.org/benchmark/red_hat_linux/).
 
-This repo originated from work done by [MindPointGroup](https://github.com/MindPointGroup/RHEL7-CIS)
+This repo originated from work done by [MindPointGroup](https://github.com/MindPointGroup/RHEL7-CIS) and follow up work from [jwacross](https://github.com/jwacross/RHEL8-CIS)
 
 Requirements
 ------------
