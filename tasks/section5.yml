@@ -670,12 +670,12 @@
       - patch
       - rule_5.5.4
 
-- name: "SCORED | 5.5.3 | PATCH | Ensure default user shell timeout is 900 seconds or less"
+- name: "SCORED | 5.5.3 | PATCH | Ensure default user shell timeout is 1800 seconds or less"
   copy:
       dest: /etc/profile.d/autologout.sh
       content: |
-         # Disconnect shell sessions idle for 900 seconds or more
-         readonly TMOUT=900 ; export TMOUT
+         # Disconnect shell sessions idle for 1800 seconds or more
+         readonly TMOUT=1800 ; export TMOUT
   when:
       - rhel8cis_rule_5_5_3|bool
   tags:
