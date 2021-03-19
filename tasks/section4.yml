@@ -114,7 +114,7 @@
       - rule_4.1.1.4
 
 - name: "NOTSCORED | 4.1.1.4 | PATCH | Ensure audit_backlog_limit is sufficient"
-  command: grub2-mkconfig –o /boot/grub2/grub.cfg
+  command: grub2-mkconfig -o /boot/grub2/grub.cfg
   when:
       - rhel8cis_rule_4_1_1_4|bool
   tags:

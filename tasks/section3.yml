@@ -537,7 +537,7 @@
       - rule_3.6
 
 - name: "NOTSCORED | 3.6 | PATCH | Disable IPv6"
-  command: grub2-mkconfig –o /boot/grub2/grub.cfg
+  command: grub2-mkconfig -o /boot/grub2/grub.cfg
   when:
       - rhel8cis_rule_3_6|bool
   tags:
