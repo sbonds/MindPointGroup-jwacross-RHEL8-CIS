@@ -289,11 +289,12 @@
       - patch
       - rule_3.4.2.1
 
-- name: "SCORED | 3.4.2.2 | PATCH | Ensure iptables is not enabled"
-  service:
+- name: "SCORED | 3.4.2.2 | PATCH | Ensure iptables is not enabled and cannot be started"
+  systemd:
       name: iptables
       state: stopped
       enabled: no
+      masked: yes
   ignore_errors: yes
   when:
       - rhel8cis_firewall == "firewalld"
@@ -303,11 +304,12 @@
       - patch
       - rule_3.4.2.2
 
-- name: "SCORED | 3.4.2.3 | PATCH | Ensure nftables is not enabled"
-  service:
+- name: "SCORED | 3.4.2.3 | PATCH | Ensure nftables is not enabled and cannot be started"
+  systemd:
       name: nftables
       state: stopped
       enabled: no
+      masked: yes
   when:
       - rhel8cis_firewall == "firewalld"
       - rhel8cis_rule_3_4_2_3|bool
